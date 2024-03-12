@@ -5,13 +5,13 @@ const NavBar = () => {
     const naveList = <>
 
         <li><NavLink to={'/'}>Home</NavLink></li>
-        <li><NavLink to={'/e'}>Available Foods </NavLink></li>
+        <li><NavLink to={'/OurMenu'}>Our Menu </NavLink></li>
         <li><NavLink to={'/e'}>AddFood</NavLink></li>
         <li><NavLink to={'/e'}>Contact</NavLink></li>
 
     </>
     return (
-        <div className="navbar fixed z-10 bg-transparent text-white  bg-base-100">
+        <div className="navbar fixed z-50 bg-[#15151530] text-white ">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
