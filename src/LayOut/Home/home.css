@@ -4,3 +4,6 @@
 .menucarimg{
     border-radius: 0px 200px 200px 200px;
 }
+.singimg{
+    background-image: url('../../assets/others/authentication.png');
+}

@@ -1,11 +1,13 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import NavBar from "../LayOut/ShearPage/NavBar";
 
 
 const Root = () => {
+    const locetion = useLocation();
+    const noHeaderFooter = locetion.pathname.includes('/Singin') || locetion.pathname.includes('/SingUP');
     return (
         <div>
-            <NavBar/>
+            { noHeaderFooter || <NavBar/>}
             <Outlet></Outlet>
         </div>
     );

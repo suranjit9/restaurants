@@ -1,17 +1,31 @@
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { AuthCountext } from "../../Provider/AuthProvider";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const NavBar = () => {
+    const { user, logOut } = useContext(AuthCountext);
+    const handalLogout = () => {
+        logOut()
+            .then(res => {
+                toast("Successfully Sing Out")
+            })
+    }
     const naveList = <>
 
         <li><NavLink to={'/'}>Home</NavLink></li>
         <li><NavLink to={'/OurMenu'}>Our Menu </NavLink></li>
-        <li><NavLink to={'/e'}>AddFood</NavLink></li>
-        <li><NavLink to={'/e'}>Contact</NavLink></li>
+        <li><NavLink to={'/OurShop/offered'}>Our Shop</NavLink></li>
+        {/* <li><NavLink to={'/SingUP'}>Sing UP</NavLink></li> */}
+
+
 
     </>
     return (
-        <div className="navbar fixed z-50 bg-[#15151530] text-white ">
+        <div className="navbar fixed z-50 bg-[#15151530] text-white pr-10">
+            <ToastContainer />
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -28,8 +42,19 @@ const NavBar = () => {
                     {naveList}
                 </ul>
             </div>
-            <div className="">
+            <div className="gap-3">
                 <a className="btn">Button</a>
+                {
+                    user ? <>
+                        <button className="btn">
+                            Inbox
+                            <div className="badge badge-secondary">+99</div>
+                        </button>
+                        <button onClick={handalLogout} className="btn btn-outline text-white font-bold">Logout</button>
+                    </> : <>
+                        <li className="btn btn-outline text-white font-bold"><NavLink to={'/Singin'}>Sing in</NavLink></li>
+                    </>
+                }
             </div>
         </div>
     );

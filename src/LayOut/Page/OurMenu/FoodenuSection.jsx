@@ -1,8 +1,11 @@
+import { Link } from "react-router-dom";
 import ManueCard from "../../ShearPage/ManueCard";
 import SectionBanner from "../../ShearPage/SectionBanner";
+import { useState } from "react";
 
 
-const FoodenuSection = ({fooditem , sectionimg, sectionheadder, sectionsubHeadder}) => {
+const FoodenuSection = ({fooditem , sectionimg, sectionheadder, sectionsubHeadder, category}) => {
+   
     return (
        <div>
         {sectionheadder && <SectionBanner sectionimg={sectionimg} sectionheadder={sectionheadder} sectionsubHeadder={sectionsubHeadder}></SectionBanner>}
@@ -16,7 +19,9 @@ const FoodenuSection = ({fooditem , sectionimg, sectionheadder, sectionsubHeadde
                     }
                 </div>
                 <div className="text-center">
-                    <button className="btn btn-outline border-0 border-b-4 mt-4">ORDER YOUR FAVOURITE FOOD</button>
+                    <Link to={`/OurShop/${category}`}>
+                    <button  className="btn btn-outline border-0 border-b-4 mt-4">ORDER YOUR FAVOURITE FOOD</button>
+                    </Link>
                 </div>
             </div>
        </div>

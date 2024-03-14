@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
+import useBaseUrl from "./BaseUrl/useBaseUrl";
 
 
 const useMenu = () => {
+    const baseUrl = useBaseUrl();
     const [menu, setMenu] = useState([]);
     const [loder, setloder] = useState(true);
     // console.log(menu)
     useEffect(()=>{
-        fetch('../../public/menu.json')
-        .then(res => res.json())
-        .then(data =>{
-            setMenu(data);
+        baseUrl.get('/menu')
+        .then(res =>{
+            setMenu(res.data);
             setloder(false)
         })
     },[])
