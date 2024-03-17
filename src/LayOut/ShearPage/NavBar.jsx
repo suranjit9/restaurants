@@ -1,12 +1,15 @@
 import { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AuthCountext } from "../../Provider/AuthProvider";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import useCarts from "../../Hook/getCarts/useCarts";
+import { CiShoppingCart } from "react-icons/ci";
 
 
 const NavBar = () => {
     const { user, logOut } = useContext(AuthCountext);
+    const [cart] = useCarts();
     const handalLogout = () => {
         logOut()
             .then(res => {
@@ -46,11 +49,14 @@ const NavBar = () => {
                 <a className="btn">Button</a>
                 {
                     user ? <>
-                        <button className="btn">
-                            Inbox
-                            <div className="badge badge-secondary">+99</div>
-                        </button>
-                        <button onClick={handalLogout} className="btn btn-outline text-white font-bold">Logout</button>
+                            <Link to={'userdeshbord/UserCart'}>
+                            <div className="flex">
+                                <CiShoppingCart className="text-2xl mr-2" />
+                                <div className="badge badge-secondary">+{cart.length}</div>
+                            </div>
+                            </Link>
+                        <button onClick={handalLogout} className="btn btn-outline text-white font-bold">{user.email}</button>
+
                     </> : <>
                         <li className="btn btn-outline text-white font-bold"><NavLink to={'/Singin'}>Sing in</NavLink></li>
                     </>

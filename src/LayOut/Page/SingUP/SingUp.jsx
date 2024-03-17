@@ -1,13 +1,16 @@
 import { useForm } from 'react-hook-form';
 import singleft from '../../../assets/others/authentication1.png';
 import '../../Home/home.css';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthCountext } from '../../../Provider/AuthProvider';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const SingUp = () => {
-    const {createdUser, updatProfile} = useContext(AuthCountext)
+    const {createdUser, updatProfile} = useContext(AuthCountext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
     const {
         register,
         handleSubmit,
@@ -20,8 +23,8 @@ const SingUp = () => {
             updatProfile(data.name, data.photo)
             .then(()=>{
                 console.log('updata profile')
-                toast("Successfully Sing in")
-
+                toast("Successfully Sing in");
+                navigate(from, { replace: true });
             })
         })
     };

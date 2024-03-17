@@ -7,10 +7,12 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import { AuthCountext } from '../../../Provider/AuthProvider';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Helmet } from 'react-helmet-async';
+import SocileSing from '../../ShearPage/SocileSing';
 const SingIn = () => {
     const captchRef = useRef(null);
     const [disable, setDisable] = useState(true);
-    const {singIn} = useContext(AuthCountext);
+    const { singIn } = useContext(AuthCountext);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
@@ -32,17 +34,21 @@ const SingIn = () => {
         handleSubmit,
         formState: { errors },
     } = useForm();
-    const onSubmit = (data) =>{
+    const onSubmit = (data) => {
         singIn(data.email, data.password)
-        .then(result=>{
-            toast("Successfully Sing in")
-            navigate(from, {replace:true});
-            console.log(result.user)})
+            .then(result => {
+                toast("Successfully Sing in")
+                navigate(from, { replace: true });
+                console.log(result.user)
+            })
 
     };
 
     return (
         <section className='singimg h-screen flex justify-center items-center'>
+            <Helmet>
+                <title>Boss Restaurant || Singin</title>
+            </Helmet>
             <div className="flex flex-wrap border shadow-2xl w-5/6 m-auto">
                 <div className="pointer-events-none relative hidden  select-none bg-black md:block md:w-1/2">
                     {/* <img className="-z-1 absolute top-0 h-full w-full object-cover opacity-90" src={singleft} /> */}
@@ -51,14 +57,15 @@ const SingIn = () => {
 
 
                 <div className="flex w-full flex-col md:w-1/2">
-                <ToastContainer />
+                    <ToastContainer />
                     {/* <div className="flex justify-center pt-12 md:-mb-24 md:justify-start md:pl-12">
                         <a href="#" className="border-b-gray-700 border-b-4 pb-2 text-2xl font-bold text-gray-900"> Damasus . </a>
                     </div> */}
                     <div className="lg:w-[28rem] mx-auto my-auto flex flex-col justify-center pt-8 md:justify-start md:px-6 md:pt-2">
                         <p className="text-center text-3xl font-bold">Welcome back, Olivia</p>
                         <p className="mt-2 text-center text-gray-500">Welcome back, please enter your details.</p>
-                        <button className="-2 mt-8 flex items-center justify-center rounded-md border px-4 py-1 outline-none ring-gray-400 ring-offset-2 transition focus:ring-2 hover:border-transparent hover:bg-black hover:text-white"><img className="mr-2 h-5" src="https://static.cdnlogo.com/logos/g/35/google-icon.svg" alt="img" /> Log in with Google</button>
+                        {/* <button className="-2 mt-8 flex items-center justify-center rounded-md border px-4 py-1 outline-none ring-gray-400 ring-offset-2 transition focus:ring-2 hover:border-transparent hover:bg-black hover:text-white"><img className="mr-2 h-5" src="https://static.cdnlogo.com/logos/g/35/google-icon.svg" alt="img" /> Log in with Google</button> */}
+                        <SocileSing></SocileSing>
                         <div className="relative mt-8 flex h-px place-items-center bg-gray-200">
                             <div className="absolute left-1/2 h-6 w-14 -translate-x-1/2 bg-white text-center text-sm text-gray-500">or</div>
                         </div>
@@ -70,7 +77,7 @@ const SingIn = () => {
                                     {errors.email && <span className='mt-2 text-red-800 font-medium'>This field is required</span>}
                                 </div>
                             </div>
-                            <div className={`flex flex-col pt-4 ${disable? 'mb-0':'mb-12'}`}>
+                            <div className={`flex flex-col pt-4 ${disable ? 'mb-0' : 'mb-12'}`}>
                                 <div className="focus-within:border-b-gray-500 relative flex overflow-hidden border-b-2 transition">
                                     <input type="password" {...register("password", { required: true, minLength: 6, pattern: /(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/ })} className="w-full flex-1 appearance-none border-gray-300 bg-white px-4 py-2 text-base text-gray-700 placeholder-gray-400 focus:outline-none" placeholder="Password" />
 

@@ -8,6 +8,8 @@ import OurMenu from "../LayOut/Page/OurMenu/OurMenu";
 import OurShop from "../LayOut/Page/OurShop/OurShop";
 import SingUp from "../LayOut/Page/SingUP/SingUp";
 import SingIn from "../LayOut/Page/SingIn/SingIn";
+import UserDeshBord from "../LayOut/UserDeshBord/UserDeshBord";
+import CartsPage from "../LayOut/UserDeshBord/CartsPage";
 
 
 export const router = createBrowserRouter([
@@ -38,4 +40,14 @@ export const router = createBrowserRouter([
       }
     ]
   },
+  {
+    path:"userdeshbord",
+    element:<UserDeshBord></UserDeshBord>,
+    children: [
+      {
+        path:"UserCart",
+        element:<CartsPage></CartsPage>
+      }
+    ]
+  }
 ]);
