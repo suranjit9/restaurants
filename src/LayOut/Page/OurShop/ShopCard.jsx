@@ -1,15 +1,15 @@
 import Swal from "sweetalert2";
 import useAuth from "../../../Hook/Auth/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
-import useBaseUrl from "../../../Hook/BaseUrl/useBaseUrl";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useCarts from "../../../Hook/getCarts/useCarts";
+import usePubLicUrl from "../../../Hook/PublickUrl/usePubLicUrl";
 
 
 
 const ShopCard = ({ item }) => {
-    const baseUrl = useBaseUrl();
+    const baseUrl = usePubLicUrl();
     const { user } = useAuth();
     // console.log(user)
     const nevegat = useNavigate();

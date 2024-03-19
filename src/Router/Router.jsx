@@ -10,6 +10,10 @@ import SingUp from "../LayOut/Page/SingUP/SingUp";
 import SingIn from "../LayOut/Page/SingIn/SingIn";
 import UserDeshBord from "../LayOut/UserDeshBord/UserDeshBord";
 import CartsPage from "../LayOut/UserDeshBord/CartsPage";
+import AllUser from "../LayOut/UserDeshBord/All Users/AllUser";
+import AddItem from "../LayOut/UserDeshBord/AddList/AddItem";
+import Adminprovider from "../Provider/Adminprovider";
+import ManageList from "../LayOut/UserDeshBord/ManageList/ManageList";
 
 
 export const router = createBrowserRouter([
@@ -47,7 +51,20 @@ export const router = createBrowserRouter([
       {
         path:"UserCart",
         element:<CartsPage></CartsPage>
-      }
+      },
+      // Admin Route----------
+      {
+        path:'users',
+        element: <Adminprovider><AllUser/></Adminprovider>
+      },
+      {
+        path:'additem',
+        element:<Adminprovider><AddItem/></Adminprovider>
+      },
+      {
+        path:'ManageList',
+        element:<Adminprovider><ManageList></ManageList></Adminprovider>
+      },
     ]
   }
 ]);

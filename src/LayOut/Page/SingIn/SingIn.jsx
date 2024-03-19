@@ -2,7 +2,7 @@ import '../..//Home/home.css';
 import singleft from '../../../assets/others/authentication1.png';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
+import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { AuthCountext } from '../../../Provider/AuthProvider';
 import { ToastContainer, toast } from 'react-toastify';
@@ -101,7 +101,7 @@ const SingIn = () => {
                                 </div>
                             </div>}
                             {/* <input type="submit" disabled={disable} value="Sing Up" className="w-full rounded-lg bg-black px-4 py-2 text-center text-base font-semibold text-white shadow-md ring-gray-500 ring-offset-2 transition focus:ring-2" /> */}
-                            <input type="submit" disabled={disable} value="Sign Up" className={`w-full rounded-lg px-4 py-2 text-center text-base font-semibold shadow-md ring-offset-2 focus:ring-2 ${disable ? 'bg-gray-400 text-gray-600 cursor-not-allowed' : 'bg-black text-white ring-gray-500'}`} />
+                            <input type="submit" disabled={disable} value="Signin" className={`w-full rounded-lg px-4 py-2 text-center text-base font-semibold shadow-md ring-offset-2 focus:ring-2 ${disable ? 'bg-gray-400 text-gray-600 cursor-not-allowed' : 'bg-black text-white ring-gray-500'}`} />
                         </form>
                         <div className="py-12 text-center">
                             <p className="whitespace-nowrap text-gray-600">

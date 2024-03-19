@@ -10,11 +10,9 @@ import { CiShoppingCart } from "react-icons/ci";
 const NavBar = () => {
     const { user, logOut } = useContext(AuthCountext);
     const [cart] = useCarts();
-    const handalLogout = () => {
+    const handalLogout =()=> {
         logOut()
-            .then(res => {
-                toast("Successfully Sing Out")
-            })
+        .then(toast("Successfully Sing Out"))
     }
     const naveList = <>
 
@@ -46,7 +44,7 @@ const NavBar = () => {
                 </ul>
             </div>
             <div className="gap-3">
-                <a className="btn">Button</a>
+                <h2>{user?.email}</h2>
                 {
                     user ? <>
                             <Link to={'userdeshbord/UserCart'}>
@@ -55,7 +53,7 @@ const NavBar = () => {
                                 <div className="badge badge-secondary">+{cart.length}</div>
                             </div>
                             </Link>
-                        <button onClick={handalLogout} className="btn btn-outline text-white font-bold">{user.email}</button>
+                        <button onClick={handalLogout} className="btn btn-outline text-white font-bold">LogOut</button>
 
                     </> : <>
                         <li className="btn btn-outline text-white font-bold"><NavLink to={'/Singin'}>Sing in</NavLink></li>

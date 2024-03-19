@@ -6,9 +6,10 @@ import { useLocation, useNavigate } from "react-router-dom";
 const SocileSing = () => {
     const {googleSingIn} = useAuth();
     const baseUrl = useBaseUrl();
-    const location = useLocation();
     const navigate = useNavigate();
+    const location = useLocation();
     const from = location.state?.from?.pathname || "/";
+    console.log(from)
     const handelSingin = () =>{
         googleSingIn()
         .then(result =>{
@@ -21,8 +22,7 @@ const SocileSing = () => {
             console.log({userInfo})
             baseUrl.post("/users", userInfo)
             .then(res=>{
-              
-                if (res.data.insertedId) {
+                if (res) {
                     navigate(from, { replace: true });
                 }
             })
@@ -30,13 +30,13 @@ const SocileSing = () => {
         })
     }
     return (
-        <div className="flex gap-3">
+        <div className="flex justify-evenly">
             <button onClick={handelSingin} className="-2 mt-8 flex items-center justify-center rounded-md border px-4 py-1 outline-none ring-gray-400 ring-offset-2 transition focus:ring-2 hover:border-transparent hover:bg-black hover:text-white">
                 <span className="text-xl mr-1 text-green-700 "><FaGoogle /></span>
-                Log in with Google</button>
+                Google</button>
             <button className="-2 mt-8 flex items-center justify-center rounded-md border px-4 py-1 outline-none ring-gray-400 ring-offset-2 transition focus:ring-2 hover:border-transparent hover:bg-black hover:text-white">
                 <span className="text-xl mr-1"><FaGoogle /></span>
-                Log in with Google</button>
+                Git Hub</button>
         </div>
     );
 };
