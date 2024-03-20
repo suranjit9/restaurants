@@ -12,9 +12,12 @@ const useBaseUrl = () => {
     // Add a request interceptor
     axiousUrl.interceptors.request.use(function (config) {
         const token = localStorage.getItem('access_token')
-        // console.log(token)
+
+        // console.log('baseUrl token',token)
         config.headers.authoriztion = `Bearer ${token}`;
+        // console.log('baseUrl token',config)
         return config;
+        
     }, function (error) {
         // Do something with request error
         return Promise.reject(error);
@@ -29,11 +32,12 @@ const useBaseUrl = () => {
         // Do something with response error
        
         const status = error.response.status;
+        
         if (status === 401 || status === 403) {
             await logOut();
             naveget('/Singin');
         }
-        console.log(status)
+        console.log({status})
         return Promise.reject(error);
     });
 

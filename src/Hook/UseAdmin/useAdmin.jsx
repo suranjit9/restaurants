@@ -6,7 +6,7 @@ import useBaseUrl from "../BaseUrl/useBaseUrl";
 const useAdmin = () => {
     const {user} = useAuth();
     const baseurl = useBaseUrl();
-    const {data: isAdmin, isPending, isLoading} = useQuery({
+    const {data: isAdmin, isLoading} = useQuery({
         queryKey:[user?.email, 'isAdmin'],
         queryFn: async ()=>{
             const res = await baseurl.get(`/users/admin/${user.email}`);

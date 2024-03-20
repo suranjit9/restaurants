@@ -2,7 +2,7 @@ import DataTable from "react-data-table-component";
 import HeadTitle from "../../ShearPage/HeadTitle";
 import useMenu from "../../../Hook/useMenu";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import useBaseUrl from "../../../Hook/BaseUrl/useBaseUrl";
 import Swal from "sweetalert2";
 
@@ -35,7 +35,7 @@ const ManageList = () => {
         },
         {
             name: 'Update',
-            cell: (row) => <Link to={`/Updatefood/${row._id}`}><button className="btn btn-outline btn-sm">Update</button></Link>
+            cell: (row) =><Link to={`/userdeshbord/updateItem/${row._id}`}><button className="btn btn-outline btn-sm">Update</button></Link>
         },
         {
             name: 'Dlete',

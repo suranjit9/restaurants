@@ -4,9 +4,12 @@ import { NavLink, Outlet } from 'react-router-dom';
 import { IoAdd, IoList } from "react-icons/io5";
 import { FaBookBookmark, FaUsers } from "react-icons/fa6";
 import useAdmin from '../../Hook/UseAdmin/useAdmin';
+import useCarts from '../../Hook/getCarts/useCarts';
+import { MdPayment } from "react-icons/md";
 
 const UserDeshBord = () => {
     const [isAdmin] = useAdmin();
+    const [cart] = useCarts();
     return (
         <div>
             <div className="drawer lg:drawer-open">
@@ -32,7 +35,8 @@ const UserDeshBord = () => {
                             // User content--------------
                             <>
                                 <li><NavLink to={'/'}>User Home</NavLink></li>
-                                <li><NavLink to={'UserCart'}><CiShoppingCart className="text-2xl mr-2" /> My Carts</NavLink></li>
+                                <li><NavLink to={'UserCart'}><CiShoppingCart className="text-2xl mr-2" /> My Carts ({cart.length})</NavLink></li>
+                                <li><NavLink to={'paymentHistory'}><MdPayment className="text-2xl mr-2" /> Payment History </NavLink></li>
                             </>}
 
                         <div className="divider">OR</div>

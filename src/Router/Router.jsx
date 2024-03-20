@@ -1,6 +1,4 @@
-import {
-  createBrowserRouter,
-} from "react-router-dom";
+import {createBrowserRouter,} from "react-router-dom";
 import Root from "./Root";
 import ErrorPage from "./ErrorPage";
 import Home from "../LayOut/Home/Home";
@@ -14,6 +12,11 @@ import AllUser from "../LayOut/UserDeshBord/All Users/AllUser";
 import AddItem from "../LayOut/UserDeshBord/AddList/AddItem";
 import Adminprovider from "../Provider/Adminprovider";
 import ManageList from "../LayOut/UserDeshBord/ManageList/ManageList";
+import UpdateItem from "../LayOut/UserDeshBord/Update/UpdateItem";
+import Peymant from "../LayOut/UserDeshBord/Peymant/Peymant";
+import PayHistory from "../LayOut/UserDeshBord/Peymant/PayHistory";
+
+
 
 
 export const router = createBrowserRouter([
@@ -52,6 +55,14 @@ export const router = createBrowserRouter([
         path:"UserCart",
         element:<CartsPage></CartsPage>
       },
+      {
+        path:'payment',
+        element:<Peymant></Peymant>
+      },
+      {
+        path:'paymentHistory',
+        element:<PayHistory></PayHistory>
+      },
       // Admin Route----------
       {
         path:'users',
@@ -65,6 +76,11 @@ export const router = createBrowserRouter([
         path:'ManageList',
         element:<Adminprovider><ManageList></ManageList></Adminprovider>
       },
+      {
+        path:'updateItem/:id',
+        element:<UpdateItem></UpdateItem>,
+        loader: ({params}) => fetch(`http://localhost:5000/menu/${params.id}`)
+      }
     ]
   }
 ]);

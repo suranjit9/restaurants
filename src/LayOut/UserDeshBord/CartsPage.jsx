@@ -2,6 +2,7 @@ import Swal from "sweetalert2";
 import useBaseUrl from "../../Hook/BaseUrl/useBaseUrl";
 import useCarts from "../../Hook/getCarts/useCarts";
 import { MdDeleteOutline } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const CartsPage = () => {
     const [cart, refetch] = useCarts();
@@ -40,7 +41,9 @@ const CartsPage = () => {
             <div className="flex justify-between w-full px-8 mt-[2%]">
                 <h2 className="text-3xl font-bold">Item's :<span className="text-green-500 pl-1">{cart.length}</span> </h2>
                 <h2 className="text-3xl font-bold">Total Price :<span className="text-green-500 pl-1">$ {myCartstotalPrice}</span> </h2>
-                <button className="text-2xl text-green-800 font-bold btn btn-outline">Pay</button>
+               {cart?.length ?  <Link to={'/userdeshbord/payment'}><button className="text-2xl text-green-800 font-bold btn btn-outline">Pay</button>
+               </Link>:
+               <button disabled className="text-2xl text-green-800 font-bold btn btn-outline">Pay</button>}
             </div>
             <div className="overflow-x-auto">
                 <table className="table w-full">
