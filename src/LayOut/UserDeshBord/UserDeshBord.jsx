@@ -26,7 +26,7 @@ const UserDeshBord = () => {
                         {/* Sidebar content here */}
                         {isAdmin ? <>
                         {/* Admin Content-------------------------- */}
-                            <li className='btn btn-outline'><NavLink to={'/'}>Admin Home</NavLink></li>
+                            <li><NavLink to={'/userdeshbord/AdminHome'}>Admin Home</NavLink></li>
                             <li><NavLink to={'additem'}><IoAdd className="text-2xl mr-2" /> Add Items</NavLink></li>
                             <li><NavLink to={'ManageList'}><IoList className="text-2xl mr-2" />Manage List</NavLink></li>
                             <li><NavLink to={'userdeshbord/ManageBooking'}><FaBookBookmark className="text-2xl mr-2" />Manage Booking</NavLink></li>
@@ -41,7 +41,7 @@ const UserDeshBord = () => {
 
                         <div className="divider">OR</div>
                         <li><NavLink to={'/'}>Home</NavLink></li>
-                        <li><NavLink to={'UserCartr'}>My Carts</NavLink></li>
+                       
 
                     </ul>
 

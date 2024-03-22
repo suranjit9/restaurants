@@ -15,6 +15,8 @@ import ManageList from "../LayOut/UserDeshBord/ManageList/ManageList";
 import UpdateItem from "../LayOut/UserDeshBord/Update/UpdateItem";
 import Peymant from "../LayOut/UserDeshBord/Peymant/Peymant";
 import PayHistory from "../LayOut/UserDeshBord/Peymant/PayHistory";
+import AdminHome from "../LayOut/UserDeshBord/AdminHome/AdminHome";
+import UserHome from "../LayOut/UserDeshBord/UserHome/UserHome";
 
 
 
@@ -52,6 +54,10 @@ export const router = createBrowserRouter([
     element:<UserDeshBord></UserDeshBord>,
     children: [
       {
+        path:'UserHome',
+        element:<UserHome></UserHome>
+      },
+      {
         path:"UserCart",
         element:<CartsPage></CartsPage>
       },
@@ -64,6 +70,10 @@ export const router = createBrowserRouter([
         element:<PayHistory></PayHistory>
       },
       // Admin Route----------
+      {
+        path:'AdminHome',
+        element:<AdminHome></AdminHome>
+      },
       {
         path:'users',
         element: <Adminprovider><AllUser/></Adminprovider>
